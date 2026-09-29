@@ -10,4 +10,5 @@ create TABLE persons(
 -- add columns by using ALTER command
 
 ALTER TABLE persons
-ADD email VARCHAR(50) NOT NULL
+ADD email VARCHAR(50) NOT NULL 
+
