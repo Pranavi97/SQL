@@ -55,3 +55,11 @@ SELECT
 FROM customers AS c
 FULL JOIN orders AS o
 ON id=customer_id
+
+
+--CROSS JOIN(Cartesian Join)
+-- generate all possible combinations of customers and orders
+
+SELECT *
+FROM customers
+CROSS JOIN orders
