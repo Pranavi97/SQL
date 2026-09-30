@@ -13,14 +13,16 @@ SELECT
 FROM Sales.Orders
 
 
-/* DATEPART, DATANAME, DATETRUNC */
+/* DATEPART, DATANAME, DATETRUNC, EOMONTH */
 SELECT 
     OrderID,
     CreationTime,
     YEAR(CreationTime) Year,
     MONTH(CreationTime) MONTH,
     DAY(CreationTime) Day,
-    --DATANAME(part, date)
+    --EOMONTH(date)
+    EOMONTH(CreationTime) eom_name,
+    --DATETRUNC(part, date)
     DATENAME(MM,CreationTime) date_name,
     DATENAME(DAY,CreationTime) day_name,
      --DATETRUNK(part, date)
@@ -34,4 +36,17 @@ SELECT
 FROM Sales.Orders
 
 
+/* how many orders placed each month */
+SELECT 
+    MONTH(OrderDate) month,
+    COUNT(*) no_of_orders
+FROM Sales.Orders
+GROUP BY MONTH((OrderDate))
 
+/* */
+/* show all orders that were placed during the month of february */
+
+SELECT 
+    *
+FROM Sales.Orders
+WHERE MONTH(OrderDate)=2  
