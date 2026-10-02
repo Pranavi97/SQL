@@ -52,3 +52,14 @@ SELECT
     -- Sales/Quantity AS price
     Sales / NULLIF(Quantity, 0) AS price
 FROM Sales.Orders
+
+/* use case of null with left and right joins */
+/* list all details for customers who have not placed any orders */
+SELECT 
+    c.*,
+    o.OrderID
+FROM Sales.Customers AS c
+LEFT JOIN Sales.Orders AS o  
+ON c.CustomerID=o.OrderID
+WHERE c.CustomerID IS NULL
+
