@@ -61,3 +61,19 @@ SELECT
     SUM(Sales) OVER(PARTITION BY OrderStatus ORDER BY OrderDate
     ROWS BETWEEN unbounded preceding AND unbounded following) total_sales3
 FROM Sales.Orders
+
+/* Running window and Rolling window functions */
+
+/* running window or moving window */
+-- calculate moving average of sales for each product over time
+SELECT 
+    OrderID,
+    ProductID,
+    OrderDate,
+    Sales,
+    AVG(Sales) OVER(PARTITION BY ProductID) AvgByProduct,
+    AVG(Sales) OVER(PARTITION BY ProductID ORDER BY OrderDate) movingAvg,
+    AVG(Sales) OVER(PARTITION BY ProductID ORDER BY OrderDate ROWS BETWEEN unbounded preceding AND CURRENT ROW) runningAvg,
+    -- calculate moving avg of sales for each product over time, including only the next order
+    AVG(Sales) OVER(PARTITION BY ProductID ORDER BY OrderDate ROWS BETWEEN CURRENT ROW AND 1 following) rollingAvg
+FROM Sales.Orders
