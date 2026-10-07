@@ -6,7 +6,8 @@
         c. DENSE_RANK()
         d. NTILE()
     2. Percentage based
-
+        a.CUME_DIST()
+        b.PERCENT_RANK()
 
 
 */
@@ -94,3 +95,15 @@ SELECT
     ROW_NUMBER() OVER(ORDER BY OrderID, OrderDate) UniqueID,
     *
 FROM Sales.OrdersArchive
+
+/* Percent based rank functions */
+
+-- CUME_DISK(), PERCENT_RANK()
+SELECT
+    OrderID,
+    ProductID,
+    Sales,
+    CUME_DIST() OVER(ORDER BY Sales DESC) percByCumeDist,
+    PERCENT_RANK() OVER(ORDER BY Sales DESC) percByPercRank
+FROM Sales.Orders
+
