@@ -1,5 +1,27 @@
 /* Windows Aggregation functions */
+/*
 
+    Aggregates set of values and return a single aggregated value
+    Rules:
+    1. expressions 
+        a. all functions should be numbers
+        b. For Count() we can use all the data types
+    2. all clauses are optional
+
+    UseCases:
+    1. overall analysis
+    2. total per group analysis
+    3. part to whole analysis
+    4. comparision analysis [average, extreme: highest/lowest]
+    5. identify duplicates
+    6. Outlier detection
+    7. running total
+    8. rolling total
+    9. moving avg
+
+
+
+*/
 -- find the total sales across all orders
 
 SELECT 
